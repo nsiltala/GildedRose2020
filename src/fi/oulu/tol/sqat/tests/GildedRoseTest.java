@@ -136,7 +136,7 @@ public class GildedRoseTest {
 	public void testBackstagePasses() {
 	    List<Item> items = new ArrayList<Item>();
 	    items.add(new Item("Backstage passes to a TAFKAL80ETC concert", 12, 20));
-	    items.add(new Item("Backstage passes to a TAFKAL80ETC concert", 7, 20));
+	    items.add(new Item("Backstage passes to a TAFKAL80ETC concert", 10, 20));
 	    items.add(new Item("Backstage passes to a TAFKAL80ETC concert", 2, 20));
 	    items.add(new Item("Backstage passes to a TAFKAL80ETC concert", 0, 20));
 	    
@@ -148,19 +148,25 @@ public class GildedRoseTest {
 	    items.add(new Item("Backstage passes to a TAFKAL80ETC concert", 2, 51));
 	    items.add(new Item("Backstage passes to a TAFKAL80ETC concert", -1, 51));
 	    
+	    items.add(new Item("Backstage passes to a TAFKAL80ETC concert", 7, 49));
+	    items.add(new Item("Backstage passes to a TAFKAL80ETC concert", 2, 49));
+	    
 	    GildedRose.updateQuality(items);
 	    
-	    assertEquals(21, items.get(0).getQuality()); // 12 days left, increase by 1
-	    assertEquals(22, items.get(1).getQuality()); // 7 days left, increase by 2
-	    assertEquals(23, items.get(2).getQuality()); // 2 days left, increase by 3
+	    assertEquals(21, items.get(0).getQuality()); // Over 10, increase by 1 (just to remember)
+	    assertEquals(22, items.get(1).getQuality()); // 10 or less, increase by 2
+	    assertEquals(23, items.get(2).getQuality()); // 5 or less, increase by 3
 	    assertEquals(0, items.get(3).getQuality()); // After the concert, quality drops to 0
 	    
-	    assertEquals(50, items.get(4).getQuality()); // Test max quality, 4 cases
+	    assertEquals(50, items.get(4).getQuality());
 	    assertEquals(50, items.get(5).getQuality());
 	    assertEquals(50, items.get(6).getQuality());
 	    assertEquals(0, items.get(7).getQuality());
 	    
 	    assertEquals(50, items.get(8).getQuality());
 	    assertEquals(0, items.get(9).getQuality());
+	    
+	    assertEquals(50, items.get(10).getQuality());
+	    assertEquals(50, items.get(10).getQuality());
 	}
 }
