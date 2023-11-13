@@ -17,6 +17,37 @@ public class GildedRoseTest {
 		assertTrue(true);
 	}
 	
+	// Task 3 Loop tests (loop is simple loop):
+	
+	// 1. Skip loop
+	@Test
+	public void testEmptyList() {
+		List<Item> items = new ArrayList<>();
+		GildedRose.updateQuality(items);
+	    assertEquals(0, items.size());
+	}
+	
+	// 2. 1 pass (look testSellDateQualityDegradation())
+	
+	// 3. 2 pass
+	@Test
+	public void testTwoPass() {
+		List<Item> items = new ArrayList<>();
+		items.add(new Item("+5 Dexterity Vest", 10, 20));
+		items.add(new Item("Aged Brie", 2, 0));
+		GildedRose.updateQuality(items);
+		assertEquals(19, items.get(0).getQuality());
+	    assertEquals(1, items.get(1).getQuality());
+	}
+	
+	// 4. m passes (already many examples below in task 2 tests)
+	 
+	// 5. n-1, n, n+1. Nope! Explanation in report
+	
+	
+	
+	// Task 2 tests:
+	
 	@Test
 	public void testMainValues() {
 		List<Item>items = new ArrayList<Item>();
